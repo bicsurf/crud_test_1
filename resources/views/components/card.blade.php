@@ -5,5 +5,6 @@
         <h5 class="card-title my-4">{{ $article->title }}</h5>
         <p class="card-text my-4">{{ $article->body }}</p>
         <a href="#" class="btn btn-primary">Guarda l'annuncio</a>
+        <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-warning">Modifica l'annuncio</a>
     </div>
 </div>

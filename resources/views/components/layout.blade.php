@@ -7,6 +7,8 @@
     <title>Esercizio sul CRUD</title>
     {{-- My CSS --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- Icon Bootstrap --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 <body>
     <x-navbar />
