@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="container">
+    <div class="container my-5">
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
-                <h1>Crea il tuo Articolo</h1>
+                <h1 class="font-monospace text-warning">Crea il tuo Articolo</h1>
                 {{-- Form di inserimento annuncio --}}
                 <form method="post" action="{{ route('articles.store') }}" enctype="multipart/form-data">
                     @csrf

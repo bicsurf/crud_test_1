@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     // CRUD --> Create, Read, Update, Delete
-
+    ## show -> ci mostra la vista del dettaglio dell'articolo creato
+    public function show(Article $article){
+        return view('articles.show', compact('article'));
+    }
     ## index -> ci mostra più occorrenza di quella classe (gli ultimi 5 caricati)
+    public function index(){
+        $articles = Article::orderBy('created_at', 'desc')->get();
+        return view('articles.index', compact('articles'));
+    }
     ## create -> ritorna la vista in cui c'è il form di creazione
     public function create(){
         return view('articles.create');
@@ -41,14 +48,14 @@ class ArticleController extends Controller
         return redirect()->route('welcome');
     }
     ## edit -> funzione che ritorna la vista con il form per modificare la risorsa
-    public function edit($id){
-        $article = Article::find($id);
+    public function edit(Article $article){
+        // $article = Article::find($id);
         return view('articles.edit', compact('article'));
     }
     ## update -> funzione che modifica i dati nel DB
-    public function update(Request $request, $id){
+    public function update(Request $request, Article $article){
         // dd($request->all());
-        $article = Article::find($id);
+        // $article = Article::find($id);
         if($request->has('img')) {
             //se la request ha un immagine salvala in questo modo
             $article->update(
@@ -72,4 +79,9 @@ class ArticleController extends Controller
         return redirect()->route('welcome');
     }
     ## delete -> funzione che elimina la risorsa dal DB
+    public function delete(Article $article){
+        // $article = Article::find($id);
+        $article->delete();
+        return redirect()->route('articles.index');
+    }
 }
